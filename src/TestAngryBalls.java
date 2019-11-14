@@ -20,6 +20,7 @@ public class TestAngryBalls {
 
         Vector<Bille> billes = new Vector<Bille>();
 
+
 //---------------- creation de la vue responsable du dessin des billes -------------------------
 
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
