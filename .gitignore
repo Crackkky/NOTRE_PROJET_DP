@@ -1,8 +1,2 @@
-	**/*
-	**/mesmaths/*
-	**/mesmaths/cinematique/*
-	**/mesmaths/geometrie/base/brouillon/*
-	**/mesmaths/geometrie/base/*
-	**/mesmaths/mecanique/*
-	**/outilsvues/*
-	**/vues/*
+#Ignore constant files
+	src/
