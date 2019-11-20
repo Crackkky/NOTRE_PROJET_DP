@@ -64,9 +64,6 @@ public class CadreAngryBalls extends Frame implements VueBillard {
         this.billard.repaint();
     }
 
-    /* (non-Javadoc)
-     * @see exodecorateur.vues.VueBillard#montrer()
-     */
     @Override
     public void montrer() {
         this.setVisible(true);

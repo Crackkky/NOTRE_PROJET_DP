@@ -39,7 +39,7 @@ public class TestAngryBallsDecore {
 
         double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le meme rayon, mais ce n'est pas obligatoire
 
-        Vecteur p0, p1, p2, p3, p4, v0, v1, v2, v3, v4;    // les positions des centres des billes et les vecteurs vitesse au demarrage.
+        Vecteur p0, p1, p2, p3, p4, p42, v0, v1, v2, v3, v4, v42;    // les positions des centres des billes et les vecteurs vitesse au demarrage.
         // Elles vont etre choisies aleatoirement
 
 //------------------- creation des vecteurs position des billes ---------------------------------
@@ -50,6 +50,9 @@ public class TestAngryBallsDecore {
         p3 = Vecteur.creationAleatoire(0, 0, xMax, yMax);
         p4 = Vecteur.creationAleatoire(0, 0, xMax, yMax);
 
+
+        p42 = Vecteur.creationAleatoire(0, 0, xMax, yMax);
+
 //------------------- creation des vecteurs vitesse des billes ---------------------------------
 
         v0 = Vecteur.creationAleatoire(-vMax, -vMax, vMax, vMax);
@@ -58,13 +61,9 @@ public class TestAngryBallsDecore {
         v3 = Vecteur.creationAleatoire(-vMax, -vMax, vMax, vMax);
         v4 = Vecteur.creationAleatoire(-vMax, -vMax, vMax, vMax);
 
-//--------------- ici commence la partie e changer ---------------------------------
+        v42 = Vecteur.creationAleatoire(-vMax, -vMax, vMax, vMax);
 
-//        billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
-//        billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
-//        billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
-//        billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
-//        billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black));
+//--------------- ici commence la partie e changer ---------------------------------
 
 
         //---- On creer les billes + decoration de noel
@@ -84,6 +83,10 @@ public class TestAngryBallsDecore {
         billes.add(new MvtNewton(
                 new BilleNormal(p4, rayon, v4, Color.black, new MurArret())));
 
+
+        billes.add(new MvtNewton(
+                new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())));
+
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
 
@@ -101,11 +104,7 @@ public class TestAngryBallsDecore {
 
 //------------------------- activation des ecouteurs des boutons et ea tourne tout seul ------------------------------
 
-
         cadre.lancerBilles.addActionListener(ecouteurBoutonLancer);             // maladroit : e changer
         cadre.arreterBilles.addActionListener(ecouteurBoutonArreter);           // maladroit : e changer
-
-
     }
-
 }
