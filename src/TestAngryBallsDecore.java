@@ -71,7 +71,7 @@ public class TestAngryBallsDecore {
         billes.add(new BilleNormal(p0, rayon, v0, Color.red, new MurRebond()));
 
         billes.add(new MvtPesanteur(
-                new MvtFrottement(
+                new MvtNewton(
                         new BilleNormal(p1, rayon, v1, Color.yellow, new MurRebond())), new Vecteur(0, 0.001)));
 
         billes.add(new MvtNewton(
@@ -85,7 +85,9 @@ public class TestAngryBallsDecore {
 
 
         billes.add(new MvtNewton(
-                new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())));
+                new MvtPesanteur(
+                        new MvtFrottement(
+                                new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())), new Vecteur(0, 0.001))));
 
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 

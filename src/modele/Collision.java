@@ -1,9 +1,8 @@
 package modele;
 
-import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 
-public class Collision {
+public abstract class Collision {
 
     /**
      * gestion de l'eventuelle collision de la bille (this) avec le contour rectangulaire de l'ecran defini par (abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur)
@@ -12,11 +11,7 @@ public class Collision {
      * <p>
      * La nature du comportement de la bille en reponse e cette collision est definie dans les classes derivees
      */
-    public void collisionContour(Vecteur position, double rayon, Vecteur vitesse,
-                                 double abscisseCoinHautGauche, double ordonneeCoinHautGauche,
-                                 double largeur, double hauteur) {
-
-        Collisions.collisionBilleContourAvecArretHorizontal(position, rayon, vitesse, abscisseCoinHautGauche, largeur);
-        Collisions.collisionBilleContourAvecArretVertical(position, rayon, vitesse, ordonneeCoinHautGauche, hauteur);
-    }
+    public abstract void collisionContour(Vecteur position, double rayon, Vecteur vitesse,
+                                          double abscisseCoinHautGauche, double ordonneeCoinHautGauche,
+                                          double largeur, double hauteur);
 }
