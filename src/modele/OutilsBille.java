@@ -103,4 +103,21 @@ public class OutilsBille {
 
         return MecaniquePoint.champGraviteGlobal(cetteBille.getPosition(), masses, C);
     }
+
+    /**
+     * @param bille La bille
+     * @return true si le clique survient sur la bille
+     */
+    public static boolean clickSurBille(int x, int y, Bille bille) {
+        Vecteur v = bille.getPosition();
+        return Math.sqrt(Math.pow(x - v.x, 2) + Math.pow(v.y - y, 2)) < bille.getRayon();
+    }
+
+    public static Bille clickSurUneBille(int x, int y, Vector<Bille> billes) {
+        for(Bille bille : billes) {
+            if(clickSurBille(x, y, bille))
+                return bille;
+        }
+        return null;
+    }
 }

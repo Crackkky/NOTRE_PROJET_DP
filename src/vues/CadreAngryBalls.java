@@ -1,10 +1,14 @@
 package vues;
 
 import modele.Bille;
+import modele.OutilsBille;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.Vector;
 
 /**
@@ -12,13 +16,17 @@ import java.util.Vector;
  * <p>
  * ICI : IL N'Y A RIEN A CHANGER
  */
-public class CadreAngryBalls extends Frame implements VueBillard {
+public class CadreAngryBalls extends Frame implements VueBillard, MouseListener, MouseMotionListener {
     public Button lancerBilles, arreterBilles;
     TextField presentation;
     Billard billard;
     Panel haut, centre, bas;
 
     EcouteurTerminaison ecouteurTerminaison;
+
+    ControlerAttraper controlerAttraper;
+    ControlerDeplacer controlerDeplacer;
+    ControlerEtat controlerEtatcourant;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
         super(titre);
@@ -49,6 +57,17 @@ public class CadreAngryBalls extends Frame implements VueBillard {
         this.arreterBilles = new Button("arreter les billes");
         this.bas.add(this.arreterBilles);
 
+        billard.addMouseListener(this);
+        billard.addMouseMotionListener(this);
+    }
+
+    private void installeControleur() {
+        controlerAttraper = new ControlerAttraper(this, null);
+        controlerDeplacer = new ControlerDeplacer(this, controlerAttraper);
+
+        controlerAttraper.suivant = controlerDeplacer;
+
+        controlerEtatcourant = controlerAttraper;
     }
 
     public double largeurBillard() {
@@ -69,5 +88,38 @@ public class CadreAngryBalls extends Frame implements VueBillard {
         this.setVisible(true);
     }
 
+    @Override
+    public void mouseMoved(MouseEvent e) {
+    }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Bille bille;
+        if( (bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes)) != null) {
+            System.out.println("BILLE ICI : " + bille.toString());
+        }
+        else
+            System.out.println("RIEN");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
 }

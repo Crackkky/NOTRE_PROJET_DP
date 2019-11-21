@@ -1,6 +1,10 @@
 import modele.Bille;
+import modele.OutilsBille;
 import vues.VueBillard;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.Vector;
 
 /**
@@ -17,6 +21,7 @@ public class AnimationBilles implements Runnable {
     VueBillard vueBillard;    // la vue responsable du dessin des billes
     private Thread thread;    // pour lancer et arreter les billes
 
+
     /**
      * @param billes
      * @param vueBillard
@@ -25,6 +30,7 @@ public class AnimationBilles implements Runnable {
         this.billes = billes;
         this.vueBillard = vueBillard;
         this.thread = null;     //est-ce utile ?
+
     }
 
     /**
