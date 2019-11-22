@@ -19,6 +19,7 @@ public class ControlerAttraper extends ControlerEtat{
             Object object;
             if( (bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), cadreAngryBalls.billard.billes)) != null) {
                 if( (object = bille.getMvt(MvtAttrapable.class)) != null) {
+                    cadreAngryBalls.billeAttrapable = bille;
                     cadreAngryBalls.attrapableVecteur = ((MvtAttrapable) object).getAttraction();
                     cadreAngryBalls.controlerEtatcourant = suivant;
                 }

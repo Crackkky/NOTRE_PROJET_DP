@@ -28,6 +28,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
 
+    Bille billeAttrapable;
     Vecteur attrapableVecteur;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
@@ -98,6 +99,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        controlerEtatcourant.traiter(e);
     }
 
     @Override
@@ -111,6 +113,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        controlerEtatcourant.traiter(e);
     }
 
 
