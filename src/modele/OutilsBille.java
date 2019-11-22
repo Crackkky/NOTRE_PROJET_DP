@@ -114,9 +114,19 @@ public class OutilsBille {
     }
 
     public static Bille clickSurUneBille(int x, int y, Vector<Bille> billes) {
-        for(Bille bille : billes) {
-            if(clickSurBille(x, y, bille))
+        for (Bille bille : billes) {
+            if (clickSurBille(x, y, bille))
                 return bille;
+        }
+        return null;
+    }
+
+    public static Bille billeAttrapable(Vector<Bille> billes) {
+        for(Bille bille : billes) {
+            if (bille.estAttrapable()) {
+                System.out.println("Bille attrapable : " + bille);
+                return bille;
+            }
         }
         return null;
     }

@@ -2,6 +2,8 @@ package vues;
 
 import mesmaths.geometrie.base.Vecteur;
 import modele.*;
+import modele.Bille;
+import modele.OutilsBille;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
@@ -98,6 +100,8 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        System.out.println("Mouse Drag");
+
     }
 
     @Override
@@ -106,11 +110,44 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("Mouse Press");
+//
+//        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
+//
+//        System.out.println("Mouse Press");
+//
+//
+////        MvtAttrapable billeAttrapable = (MvtAttrapable) bille.getMvt(MvtAttrapable.class);
+////        System.out.println("Bille attrapable? " + billeAttrapable.estAttrapable());
+//
+//        if (bille != null) {
+////            System.out.println("Bille attrapee avant? " + bille.attrapee);
+//
+////            MvtAttrapable billeAttrapable = (MvtAttrapable) bille.getMvt(MvtAttrapable.class);
+////            System.out.println("Bille attrapable? " + billeAttrapable.estAttrapable());
+//
+//            controlerEtatcourant.traiter(e, bille);
+////            System.out.println("Bille attrapee apres? " + bille.attrapee);
+//            System.out.println(" ");
+//        }
         controlerEtatcourant.traiter(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+//        System.out.println("Mouse Release");
+//
+//        Bille bille = OutilsBille.billeAttrapable(billard.billes);
+//
+//        if (bille != null && bille.attrapee) {
+//            System.out.println("Bille attrapee avant? " + bille.attrapee);
+//            System.out.println(bille);
+//
+//            controlerEtatcourant.traiter(e, bille);
+//
+//            System.out.println("Bille attrapee apres? " + bille.attrapee);
+//            System.out.println(" ");
+//        }
     }
 
 

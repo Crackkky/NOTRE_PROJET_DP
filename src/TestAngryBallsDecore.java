@@ -84,11 +84,13 @@ public class TestAngryBallsDecore {
                 new BilleNormal(p4, rayon, v4, Color.black, new MurArret())));
 
 
-        billes.add(new MvtAttrapable(
-                new MvtNewton(
+        billes.add(new MvtNewton(
                 new MvtPesanteur(
                         new MvtFrottement(
-                                new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())), new Vecteur(0, 0.001))), new Vecteur()));
+                                new MvtAttrapable(
+                                        new BilleNormal(p42, rayon, v42, Color.pink, new MurArret()))), new Vecteur(0, 0.001))));
+
+
 
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 

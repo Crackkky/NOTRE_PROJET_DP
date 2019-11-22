@@ -5,17 +5,24 @@ import mesmaths.geometrie.base.Vecteur;
 import java.util.Vector;
 
 public class MvtAttrapable extends DecorateurBille{
-    Vecteur attraction;
 
-    public MvtAttrapable(Bille billeDecoree, Vecteur attraction) {
+    public MvtAttrapable(Bille billeDecoree) {
         super(billeDecoree);
-        this.attraction = attraction;
+    }
+
+    @Override
+    public boolean estAttrapable() {
+        return true;
     }
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         this.billeDecoree.gestionAcceleration(billes);
-        this.getAcceleration().ajoute(this.attraction);
+        if (!attrapee)
+            this.getAcceleration().ajoute(new Vecteur(0, 0));
+        else
+            this.getAcceleration().ajoute(new Vecteur(10, 10));
+
     }
 
     public Vecteur getAttraction() {

@@ -13,8 +13,12 @@ import java.util.Vector;
  * A MODIFIER
  */
 public abstract class Bille {
+    public boolean attrapee = false;
+
 
     public abstract Vecteur getPosition();
+
+//    public abstract Object getMvt(Class<?> c);
 
     public abstract double getRayon();
 
@@ -30,8 +34,7 @@ public abstract class Bille {
 
     public abstract double masse();
 
-    public Object getMvt(Class<?> c) {return null;};
-
+    public abstract boolean estAttrapable();
 
     /**
      * mise e jour de getPosition() et vitesse e t+deltaT e partir de getPosition() et vitesse e l'instant t
@@ -85,9 +88,16 @@ public abstract class Bille {
         g.drawOval(xMin, yMin, width, height);
     }
 
+    String attrapableString() {
+        if (estAttrapable())
+            return "attrapable";
+        else
+            return "pas attrapable";
+    }
 
     public String toString() {
-        return "[pos : " + getPosition() + ", ray : " + getRayon() + ", vit : " + getVitesse() + ", acc : " + getAcceleration() + ", col : " + getCouleur() + ", key : " + getClef() + "]\n";
+        return "[pos : " + getPosition() + ", ray : " + getRayon() + ", vit : " + getVitesse() + ", acc : " + getAcceleration() +
+                ", col : " + getCouleur() + ", key : " + getClef() + ", " + attrapableString() + "]\n";
     }
 
 //----------------- classe Bille -------------------------------------

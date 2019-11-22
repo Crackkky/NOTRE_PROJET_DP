@@ -67,6 +67,13 @@ public abstract class DecorateurBille extends Bille {
 
 
     @Override
+    public boolean estAttrapable() {
+        return this.billeDecoree.estAttrapable();
+    }
+
+
+
+    @Override
     public void deplacer(double deltaT) {
         this.billeDecoree.deplacer(deltaT);
     }

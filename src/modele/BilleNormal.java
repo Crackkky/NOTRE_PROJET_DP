@@ -40,6 +40,11 @@ public class BilleNormal extends Bille {
         return this.position;
     }
 
+//    @Override
+//    public Object getMvt(Class<?> c){
+//        return null;
+//    }
+
     @Override
     public double getRayon() {
         return this.rayon;
@@ -73,6 +78,11 @@ public class BilleNormal extends Bille {
     @Override
     public double masse() {
         return ro * Geop.volumeSphere(rayon);
+    }
+
+    @Override
+    public boolean estAttrapable() {
+        return false;
     }
 
     /**
