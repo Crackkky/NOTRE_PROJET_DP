@@ -1,6 +1,7 @@
 package vues;
 
 import modele.Bille;
+import modele.MvtNewton;
 import modele.OutilsBille;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
@@ -25,7 +26,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     EcouteurTerminaison ecouteurTerminaison;
 
     ControlerAttraper controlerAttraper;
-    ControlerDeplacer controlerDeplacer;
+    ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
@@ -63,9 +64,9 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     private void installeControleur() {
         controlerAttraper = new ControlerAttraper(this, null);
-        controlerDeplacer = new ControlerDeplacer(this, controlerAttraper);
+        controlerAttracter = new ControlerAttracter(this, controlerAttraper);
 
-        controlerAttraper.suivant = controlerDeplacer;
+        controlerAttraper.suivant = controlerAttracter;
 
         controlerEtatcourant = controlerAttraper;
     }
@@ -98,16 +99,15 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Bille bille;
-        if( (bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes)) != null) {
-            System.out.println("BILLE ICI : " + bille.toString());
-        }
-        else
-            System.out.println("RIEN");
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+//        Bille bille;
+//        if( (bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes)) != null) {
+//
+//        }
+        MvtNewton tamere = (MvtNewton) billard.billes.get(1).getMvt(MvtNewton.class);
     }
 
     @Override

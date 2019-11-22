@@ -20,6 +20,17 @@ public abstract class DecorateurBille extends Bille {
     }
 
     @Override
+    public Object getMvt(Class<?> c) {
+        DecorateurBille decorateurBille;
+        do {
+            decorateurBille = (DecorateurBille) billeDecoree;
+            if(decorateurBille.getClass() == c )
+                return c.cast( decorateurBille);
+        }while(billeDecoree != null && billeDecoree instanceof DecorateurBille);
+        return null;
+    }
+
+    @Override
     public double getRayon() {
         return this.billeDecoree.getRayon();
     }

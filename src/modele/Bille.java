@@ -30,6 +30,8 @@ public abstract class Bille {
 
     public abstract double masse();
 
+    public Object getMvt(Class<?> c) {return null;};
+
 
     /**
      * mise e jour de getPosition() et vitesse e t+deltaT e partir de getPosition() et vitesse e l'instant t

@@ -2,9 +2,9 @@ package vues;
 
 import java.awt.event.MouseEvent;
 
-public class ControlerDeplacer extends ControlerEtat{
+public class ControlerAttracter extends ControlerEtat{
 
-    public ControlerDeplacer(CadreAngryBalls cadreAngryBalls, ControlerEtat suivant) {
+    public ControlerAttracter(CadreAngryBalls cadreAngryBalls, ControlerEtat suivant) {
         super(cadreAngryBalls, suivant);
     }
 
