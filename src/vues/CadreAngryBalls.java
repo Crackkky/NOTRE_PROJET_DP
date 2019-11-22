@@ -1,7 +1,6 @@
 package vues;
 
 import mesmaths.geometrie.base.Vecteur;
-import modele.*;
 import modele.Bille;
 import modele.OutilsBille;
 import outilsvues.EcouteurTerminaison;
@@ -112,7 +111,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     public void mousePressed(MouseEvent e) {
         System.out.println("Mouse Press");
 //
-//        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
+        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
 //
 //        System.out.println("Mouse Press");
 //
@@ -130,14 +129,14 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 ////            System.out.println("Bille attrapee apres? " + bille.attrapee);
 //            System.out.println(" ");
 //        }
-        controlerEtatcourant.traiter(e);
+        controlerEtatcourant.traiter(e, bille);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
 //        System.out.println("Mouse Release");
 //
-//        Bille bille = OutilsBille.billeAttrapable(billard.billes);
+        Bille bille = OutilsBille.billeAttrapable(billard.billes);
 //
 //        if (bille != null && bille.attrapee) {
 //            System.out.println("Bille attrapee avant? " + bille.attrapee);
@@ -148,6 +147,9 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 //            System.out.println("Bille attrapee apres? " + bille.attrapee);
 //            System.out.println(" ");
 //        }
+
+        controlerEtatcourant.traiter(e, bille);
+
     }
 
 

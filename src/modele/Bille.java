@@ -13,12 +13,10 @@ import java.util.Vector;
  * A MODIFIER
  */
 public abstract class Bille {
-    public boolean attrapee = false;
-
 
     public abstract Vecteur getPosition();
 
-//    public abstract Object getMvt(Class<?> c);
+    public abstract Object getMvt(Class<?> c);
 
     public abstract double getRayon();
 
@@ -97,7 +95,7 @@ public abstract class Bille {
 
     public String toString() {
         return "[pos : " + getPosition() + ", ray : " + getRayon() + ", vit : " + getVitesse() + ", acc : " + getAcceleration() +
-                ", col : " + getCouleur() + ", key : " + getClef() + ", " + attrapableString() + "]\n";
+                ", col : " + getCouleur() + ", key : " + getClef() + ", " + /*attrapableString() + */"]\n";
     }
 
 //----------------- classe Bille -------------------------------------

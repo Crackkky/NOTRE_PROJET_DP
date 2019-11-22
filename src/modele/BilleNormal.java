@@ -40,10 +40,10 @@ public class BilleNormal extends Bille {
         return this.position;
     }
 
-//    @Override
-//    public Object getMvt(Class<?> c){
-//        return null;
-//    }
+    @Override
+    public Object getMvt(Class<?> c) {
+        return null;
+    }
 
     @Override
     public double getRayon() {

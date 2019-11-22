@@ -13,7 +13,7 @@ public class ControlerAttracter extends ControlerEtat{
 
     @Override
     public void traiter(MouseEvent arg0, Bille bille) {
-        bille.attrapee = false;
+//        bille.attrapee = false;
         cadreAngryBalls.controlerEtatcourant = suivant;
     }
 

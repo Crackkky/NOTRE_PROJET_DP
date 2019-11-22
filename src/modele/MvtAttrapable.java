@@ -5,6 +5,8 @@ import mesmaths.geometrie.base.Vecteur;
 import java.util.Vector;
 
 public class MvtAttrapable extends DecorateurBille{
+    public boolean attrapee = false;
+    Vecteur attraction;
 
     public MvtAttrapable(Bille billeDecoree) {
         super(billeDecoree);
