@@ -68,27 +68,26 @@ public class TestAngryBallsDecore {
 
         //---- On creer les billes + decoration de noel
 
-        billes.add(new BilleNormal(p0, rayon, v0, Color.red, new MurRebond()));
-
-        billes.add(new MvtPesanteur(
-                new MvtNewton(
-                        new BilleNormal(p1, rayon, v1, Color.yellow, new MurRebond())), new Vecteur(0, 0.001)));
-
-        billes.add(new MvtNewton(
-                new MvtFrottement(
-                        new BilleNormal(p2, rayon, v2, Color.green, new MurRebond()))));
-
-        billes.add(new BilleNormal(p3, rayon, v3, Color.cyan, new MurPasseMuraille()));
-
-        billes.add(new MvtNewton(
-                new BilleNormal(p4, rayon, v4, Color.black, new MurArret())));
-
+//        billes.add(new BilleNormal(p0, rayon, v0, Color.red, new MurRebond()));
+//
+//        billes.add(new MvtPesanteur(
+//                new MvtNewton(
+//                        new BilleNormal(p1, rayon, v1, Color.yellow, new MurRebond())), new Vecteur(0, 0.001)));
+//
+//        billes.add(new MvtNewton(
+//                new MvtFrottement(
+//                        new BilleNormal(p2, rayon, v2, Color.green, new MurRebond()))));
+//
+//        billes.add(new BilleNormal(p3, rayon, v3, Color.cyan, new MurPasseMuraille()));
+//
+//        billes.add(new MvtNewton(
+//                new BilleNormal(p4, rayon, v4, Color.black, new MurArret())));
 
         billes.add(new MvtAttrapable(
                 new MvtNewton(
-                new MvtPesanteur(
-                        new MvtFrottement(
-                                new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())), new Vecteur(0, 0.001))), new Vecteur()));
+                        new MvtPesanteur(
+                                new MvtFrottement(
+                                        new BilleNormal(p42, rayon, v42, Color.pink, new MurArret())), new Vecteur(0, 0.001))), new Vecteur()));
 
 //---------------------- ici finit la partie e changer -------------------------------------------------------------
 
