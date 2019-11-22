@@ -17,4 +17,12 @@ public class MvtAttrapable extends DecorateurBille{
         this.billeDecoree.gestionAcceleration(billes);
         this.getAcceleration().ajoute(this.attraction);
     }
+
+    public Vecteur getAttraction() {
+        return attraction;
+    }
+
+    public void setAttraction(Vecteur attraction) {
+        this.attraction = attraction;
+    }
 }

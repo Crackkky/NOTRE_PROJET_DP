@@ -1,8 +1,7 @@
 package vues;
 
-import modele.Bille;
-import modele.MvtNewton;
-import modele.OutilsBille;
+import mesmaths.geometrie.base.Vecteur;
+import modele.*;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
@@ -28,6 +27,8 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     ControlerAttraper controlerAttraper;
     ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
+
+    Vecteur attrapableVecteur;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
         super(titre);
@@ -60,6 +61,8 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
         billard.addMouseListener(this);
         billard.addMouseMotionListener(this);
+
+        installeControleur();
     }
 
     private void installeControleur() {
@@ -103,11 +106,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
-//        Bille bille;
-//        if( (bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes)) != null) {
-//
-//        }
-        MvtNewton tamere = (MvtNewton) billard.billes.get(1).getMvt(MvtNewton.class);
+        controlerEtatcourant.traiter(e);
     }
 
     @Override

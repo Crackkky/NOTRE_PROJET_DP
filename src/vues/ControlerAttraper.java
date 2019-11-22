@@ -1,5 +1,9 @@
 package vues;
 
+import modele.Bille;
+import modele.MvtAttrapable;
+import modele.OutilsBille;
+
 import java.awt.event.MouseEvent;
 
 public class ControlerAttraper extends ControlerEtat{
@@ -11,8 +15,14 @@ public class ControlerAttraper extends ControlerEtat{
     @Override
     public void traiter(MouseEvent arg0) {
         if(arg0.getButton() == MouseEvent.BUTTON1) {
-            //Voir si on a clique sur une balle, si oui, l'attraper
-            cadreAngryBalls.controlerEtatcourant = suivant;
+            Bille bille;
+            Object object;
+            if( (bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), cadreAngryBalls.billard.billes)) != null) {
+                if( (object = bille.getMvt(MvtAttrapable.class)) != null) {
+                    cadreAngryBalls.attrapableVecteur = ((MvtAttrapable) object).getAttraction();
+                    cadreAngryBalls.controlerEtatcourant = suivant;
+                }
+            }
         }
     }
 }
