@@ -25,14 +25,14 @@ public abstract class DecorateurBille extends Bille {
     }
 
     private Object getMvtRecursif(Class<?> c, DecorateurBille decorateurBille) {
-        if (decorateurBille.billeDecoree.getClass() == c)
-            return decorateurBille.billeDecoree;
-        if (decorateurBille.billeDecoree.getClass() == BilleNormal.class)
-            return null;
-        return billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
-//        if(decorateurBille.getClass() == c)
-//            return this;
-//        return billeDecoree != null && billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
+//        if (decorateurBille.billeDecoree.getClass() == c)
+//            return decorateurBille.billeDecoree;
+//        if (decorateurBille.billeDecoree.getClass() == BilleNormal.class)
+//            return null;
+//        return billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
+        if (decorateurBille.getClass() == c)
+            return this;
+        return billeDecoree != null && billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
     }
 
     @Override

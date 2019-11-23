@@ -77,7 +77,7 @@ public class MecaniquePoint {
      * calcule et renvoie le champ de gravite au point P du e la masse m placee en C
      * ne tient pas compte de la constante de gravitation G
      */
-    private static Vecteur champGravite(Vecteur P, double m, Vecteur C) {
+    public static Vecteur champGravite(Vecteur P, double m, Vecteur C) {
         Vecteur PC;  /* le vecteur P-->C */
         double PC2; /* |PC|e */
         double coef;

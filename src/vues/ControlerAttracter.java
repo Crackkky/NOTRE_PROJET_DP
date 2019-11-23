@@ -1,12 +1,10 @@
 package vues;
 
-import modele.Bille;
-
 import mesmaths.geometrie.base.Vecteur;
-import java.awt.event.MouseEvent;
-import java.util.Vector;
 
-public class ControlerAttracter extends ControlerEtat{
+import java.awt.event.MouseEvent;
+
+public class ControlerAttracter extends ControlerEtat {
 
     public ControlerAttracter(CadreAngryBalls cadreAngryBalls, ControlerEtat suivant) {
         super(cadreAngryBalls, suivant);
@@ -14,12 +12,13 @@ public class ControlerAttracter extends ControlerEtat{
 
     @Override
     public void traiter(MouseEvent arg0) {
-        Vecteur v_bille = cadreAngryBalls.billeAttrapable.getPosition(),
-                attrapableVecteur = cadreAngryBalls.attrapableVecteur;
-        attrapableVecteur.set(new Vecteur(0, -0.01)); // TODO bien calculer ici le vecteur de l'attraction, ou peut etre le faire dans MVTAttrapable, comme pour les autres ? Non ?
+        cadreAngryBalls.billeAttrapable.coordCurseur = new Vecteur(arg0.getX(), arg0.getY());
+        System.out.println(cadreAngryBalls.billeAttrapable.coordCurseur);
+//        System.out.println("X : " + cadreAngryBalls.billeAttrapable.coordCurseur.x/1000 + "Y : " + cadreAngryBalls.billeAttrapable.coordCurseur.y/1000);
+
         if (arg0.getID() == MouseEvent.MOUSE_RELEASED) {
             //Lancer la boule
-            attrapableVecteur.set(new Vecteur());
+            cadreAngryBalls.billeAttrapable.coordCurseur = null;
             cadreAngryBalls.controlerEtatcourant = suivant;
         }
     }

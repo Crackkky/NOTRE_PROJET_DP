@@ -1,12 +1,12 @@
 package modele;
 
 import mesmaths.geometrie.base.Vecteur;
+import mesmaths.mecanique.MecaniquePoint;
 
 import java.util.Vector;
 
 public class MvtAttrapable extends DecorateurBille{
-    public boolean attrapee = false;
-    Vecteur attraction;
+    public Vecteur coordCurseur;
 
     public MvtAttrapable(Bille billeDecoree) {
         super(billeDecoree);
@@ -20,18 +20,15 @@ public class MvtAttrapable extends DecorateurBille{
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         this.billeDecoree.gestionAcceleration(billes);
-        if (!attrapee)
-            this.getAcceleration().ajoute(new Vecteur(0, 0));
-        else
-            this.getAcceleration().ajoute(new Vecteur(10, 10));
-
+        if (coordCurseur != null) {
+            this.getAcceleration().ajoute(MecaniquePoint.champGravite(coordCurseur, 1, getPosition())); //TODO Hum c'est plus du pingpong que d'attraper vraiment la bille
+//            this.getAcceleration().ajoute(new Vecteur(coordCurseur.x/100, coordCurseur.y/100));
+        }
     }
 
-    public Vecteur getAttraction() {
-        return attraction;
-    }
+//    champGraviteGlobal(Vecteur P, double masses[], Vecteur C[])
 
-    public void setAttraction(Vecteur attraction) {
-        this.attraction = attraction;
+    public Vecteur getCoordCurseur() {
+        return coordCurseur;
     }
 }

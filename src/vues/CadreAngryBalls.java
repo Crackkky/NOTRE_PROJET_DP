@@ -1,7 +1,7 @@
 package vues;
 
-import mesmaths.geometrie.base.Vecteur;
-import modele.*;
+import modele.Bille;
+import modele.MvtAttrapable;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
@@ -28,8 +28,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
 
-    Bille billeAttrapable;
-    Vecteur attrapableVecteur;
+    MvtAttrapable billeAttrapable;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
         super(titre);
@@ -99,7 +98,9 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        System.out.println("Mouse Drag");
+//        System.out.println("Mouse Drag");
+        System.out.println("Controleur courant : " + controlerEtatcourant);
+
         controlerEtatcourant.traiter(e);
     }
 
@@ -109,7 +110,8 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse Press");
+//        System.out.println("Mouse Press");
+        System.out.println("Controleur courant : " + controlerEtatcourant);
 //
 //        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
 //
@@ -135,20 +137,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     @Override
     public void mouseReleased(MouseEvent e) {
 //        System.out.println("Mouse Release");
-//
-        Bille bille = OutilsBille.billeAttrapable(billard.billes);
-//
-//        if (bille != null && bille.attrapee) {
-//            System.out.println("Bille attrapee avant? " + bille.attrapee);
-//            System.out.println(bille);
-//
-//            controlerEtatcourant.traiter(e, bille);
-//
-//            System.out.println("Bille attrapee apres? " + bille.attrapee);
-//            System.out.println(" ");
-//        }
-
-        controlerEtatcourant.traiter(e, bille);
+        System.out.println("Controleur courant : " + controlerEtatcourant);
 
         controlerEtatcourant.traiter(e);
     }
