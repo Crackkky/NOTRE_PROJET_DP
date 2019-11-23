@@ -1,8 +1,7 @@
 package vues;
 
 import mesmaths.geometrie.base.Vecteur;
-import modele.Bille;
-import modele.OutilsBille;
+import modele.*;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
@@ -29,6 +28,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
 
+    Bille billeAttrapable;
     Vecteur attrapableVecteur;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
@@ -100,7 +100,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     @Override
     public void mouseDragged(MouseEvent e) {
         System.out.println("Mouse Drag");
-
+        controlerEtatcourant.traiter(e);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     public void mousePressed(MouseEvent e) {
         System.out.println("Mouse Press");
 //
-        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
+//        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
 //
 //        System.out.println("Mouse Press");
 //
@@ -129,7 +129,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 ////            System.out.println("Bille attrapee apres? " + bille.attrapee);
 //            System.out.println(" ");
 //        }
-        controlerEtatcourant.traiter(e, bille);
+        controlerEtatcourant.traiter(e);
     }
 
     @Override
@@ -150,6 +150,7 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
         controlerEtatcourant.traiter(e, bille);
 
+        controlerEtatcourant.traiter(e);
     }
 
 

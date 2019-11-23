@@ -2,6 +2,7 @@ package vues;
 
 import modele.Bille;
 
+import mesmaths.geometrie.base.Vecteur;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
@@ -12,22 +13,15 @@ public class ControlerAttracter extends ControlerEtat{
     }
 
     @Override
-    public void traiter(MouseEvent arg0, Bille bille) {
-//        bille.attrapee = false;
-        cadreAngryBalls.controlerEtatcourant = suivant;
-    }
-
-    @Override
-    public void traiterDrag(MouseEvent arg0, Bille bille, Vector<Bille> billes) {
-        if(arg0.getButton() == MouseEvent.MOUSE_DRAGGED) {
-            //Deplacer la bille en fonction du mouvement de la souris
+    public void traiter(MouseEvent arg0) {
+        Vecteur v_bille = cadreAngryBalls.billeAttrapable.getPosition(),
+                attrapableVecteur = cadreAngryBalls.attrapableVecteur;
+        attrapableVecteur.set(new Vecteur(0, -0.01)); // TODO bien calculer ici le vecteur de l'attraction, ou peut etre le faire dans MVTAttrapable, comme pour les autres ? Non ?
+        if (arg0.getID() == MouseEvent.MOUSE_RELEASED) {
+            //Lancer la boule
+            attrapableVecteur.set(new Vecteur());
+            cadreAngryBalls.controlerEtatcourant = suivant;
         }
-//        else { //TODO "traiter" et "traiterDrag" correspond au "if"
-//            if(arg0.getButton() == MouseEvent.MOUSE_RELEASED) {
-//                Lancer la boule
-//                cadreAngryBalls.controlerEtatcourant = suivant;
-//            }
-//        }
     }
 
     @Override

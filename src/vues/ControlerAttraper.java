@@ -14,32 +14,18 @@ public class ControlerAttraper extends ControlerEtat {
     }
 
     @Override
-    public void traiter(MouseEvent arg0, Bille bille1) {
-//
-//        if(arg0.getButton() == MouseEvent.BUTTON1) {
-//
-//            if (bille.estAttrapable()) {
-//                bille.attrapee = true;
-//
-//            }
-//            //TODO else error
-//
-//            cadreAngryBalls.controlerEtatcourant = suivant;
-        Bille bille;
-        Object object;
-        if ((bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), cadreAngryBalls.billard.billes)) != null) {
-            if ((object = bille.getMvt(MvtAttrapable.class)) != null) {
-                cadreAngryBalls.attrapableVecteur = ((MvtAttrapable) object).getAttraction();
-                System.out.println(object);
-                cadreAngryBalls.controlerEtatcourant = suivant;
+    public void traiter(MouseEvent arg0) {
+        if(arg0.getButton() == MouseEvent.BUTTON1) {
+            Bille bille;
+            Object object;
+            if( (bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), cadreAngryBalls.billard.billes)) != null) {
+                if( (object = bille.getMvt(MvtAttrapable.class)) != null) {
+                    cadreAngryBalls.billeAttrapable = bille;
+                    cadreAngryBalls.attrapableVecteur = ((MvtAttrapable) object).getAttraction();
+                    cadreAngryBalls.controlerEtatcourant = suivant;
+                }
             }
         }
-    }
-
-
-    @Override
-    public void traiterDrag(MouseEvent arg0, Bille bille, Vector<Bille> billes) {
-
     }
 
     @Override
