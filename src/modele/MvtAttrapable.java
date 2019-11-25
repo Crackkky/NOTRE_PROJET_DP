@@ -1,21 +1,23 @@
 package modele;
 
 import mesmaths.geometrie.base.Vecteur;
+import mesmaths.mecanique.MecaniquePoint;
 
 import java.util.Vector;
 
 public class MvtAttrapable extends DecorateurBille{
     Vecteur attraction;
 
-    public MvtAttrapable(Bille billeDecoree, Vecteur attraction) {
+    public MvtAttrapable(Bille billeDecoree) {
         super(billeDecoree);
-        this.attraction = attraction;
     }
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         this.billeDecoree.gestionAcceleration(billes);
-        this.getAcceleration().ajoute(this.attraction);
+        if(attraction != null) {
+            this.getAcceleration().ajoute(MecaniquePoint.champGravite(attraction, 1, getPosition()));
+        }
     }
 
     public Vecteur getAttraction() {

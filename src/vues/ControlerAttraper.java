@@ -1,5 +1,6 @@
 package vues;
 
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.MvtAttrapable;
 import modele.OutilsBille;
@@ -19,8 +20,10 @@ public class ControlerAttraper extends ControlerEtat{
             Object object;
             if( (bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), cadreAngryBalls.billard.billes)) != null) {
                 if( (object = bille.getMvt(MvtAttrapable.class)) != null) {
+                    Vecteur v = new Vecteur(arg0.getX(), arg0.getY());
                     cadreAngryBalls.billeAttrapable = bille;
-                    cadreAngryBalls.attrapableVecteur = ((MvtAttrapable) object).getAttraction();
+                    ((MvtAttrapable) object).setAttraction(v);
+                    cadreAngryBalls.attrapableVecteur = v;
                     cadreAngryBalls.controlerEtatcourant = suivant;
                 }
             }
