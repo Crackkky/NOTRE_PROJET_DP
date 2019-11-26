@@ -80,11 +80,6 @@ public class BilleNormal extends Bille {
         return ro * Geop.volumeSphere(rayon);
     }
 
-    @Override
-    public boolean estAttrapable() {
-        return false;
-    }
-
     /**
      * calcul (c-e-d mise e jour) eventuel  du vecteur acceleration.
      * billes est la liste de toutes les billes en mouvement

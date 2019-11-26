@@ -1,5 +1,6 @@
 package vues;
 
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.MvtAttrapable;
 import outilsvues.EcouteurTerminaison;
@@ -24,9 +25,11 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     EcouteurTerminaison ecouteurTerminaison;
 
+
     ControlerAttraper controlerAttraper;
     ControlerAttracter controlerAttracter;
     ControlerEtat controlerEtatcourant;
+
 
     MvtAttrapable billeAttrapable;
 
@@ -98,9 +101,6 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
-//        System.out.println("Mouse Drag");
-        System.out.println("Controleur courant : " + controlerEtatcourant);
-
         controlerEtatcourant.traiter(e);
     }
 
@@ -110,35 +110,12 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
-//        System.out.println("Mouse Press");
-        System.out.println("Controleur courant : " + controlerEtatcourant);
-//
-//        Bille bille = OutilsBille.clickSurUneBille(e.getX(), e.getY(), billard.billes);
-//
-//        System.out.println("Mouse Press");
-//
-//
-////        MvtAttrapable billeAttrapable = (MvtAttrapable) bille.getMvt(MvtAttrapable.class);
-////        System.out.println("Bille attrapable? " + billeAttrapable.estAttrapable());
-//
-//        if (bille != null) {
-////            System.out.println("Bille attrapee avant? " + bille.attrapee);
-//
-////            MvtAttrapable billeAttrapable = (MvtAttrapable) bille.getMvt(MvtAttrapable.class);
-////            System.out.println("Bille attrapable? " + billeAttrapable.estAttrapable());
-//
-//            controlerEtatcourant.traiter(e, bille);
-////            System.out.println("Bille attrapee apres? " + bille.attrapee);
-//            System.out.println(" ");
-//        }
+        controlerEtatcourant.suivant.precPosCurseur = new Vecteur(e.getX(), e.getY());
         controlerEtatcourant.traiter(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-//        System.out.println("Mouse Release");
-        System.out.println("Controleur courant : " + controlerEtatcourant);
-
         controlerEtatcourant.traiter(e);
     }
 

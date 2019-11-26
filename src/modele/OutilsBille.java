@@ -120,14 +120,4 @@ public class OutilsBille {
         }
         return null;
     }
-
-    public static Bille billeAttrapable(Vector<Bille> billes) {
-        for(Bille bille : billes) {
-            if (bille.estAttrapable()) {
-                System.out.println("Bille attrapable : " + bille);
-                return bille;
-            }
-        }
-        return null;
-    }
 }

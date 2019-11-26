@@ -13,8 +13,11 @@ public class ControlerAttracter extends ControlerEtat {
     @Override
     public void traiter(MouseEvent arg0) {
         cadreAngryBalls.billeAttrapable.coordCurseur = new Vecteur(arg0.getX(), arg0.getY());
-        System.out.println(cadreAngryBalls.billeAttrapable.coordCurseur);
+        cadreAngryBalls.billeAttrapable.precCoordCurseur = new Vecteur(precPosCurseur.x, precPosCurseur.y);
+
+
 //        System.out.println("X : " + cadreAngryBalls.billeAttrapable.coordCurseur.x/1000 + "Y : " + cadreAngryBalls.billeAttrapable.coordCurseur.y/1000);
+        precPosCurseur = new Vecteur(arg0.getX(), arg0.getY());
 
         if (arg0.getID() == MouseEvent.MOUSE_RELEASED) {
             //Lancer la boule
