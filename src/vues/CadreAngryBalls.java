@@ -1,15 +1,10 @@
 package vues;
 
-import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
-import modele.MvtAttrapable;
 import outilsvues.EcouteurTerminaison;
 import outilsvues.Outils;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.Vector;
 
 /**
@@ -17,21 +12,13 @@ import java.util.Vector;
  * <p>
  * ICI : IL N'Y A RIEN A CHANGER
  */
-public class CadreAngryBalls extends Frame implements VueBillard, MouseListener, MouseMotionListener {
+public class CadreAngryBalls extends Frame implements VueBillard {
     public Button lancerBilles, arreterBilles;
     TextField presentation;
-    Billard billard;
+    public Billard billard;
     Panel haut, centre, bas;
 
     EcouteurTerminaison ecouteurTerminaison;
-
-
-    ControlerAttraper controlerAttraper;
-    ControlerAttracter controlerAttracter;
-    ControlerEtat controlerEtatcourant;
-
-
-    MvtAttrapable billeAttrapable;
 
     public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
         super(titre);
@@ -61,20 +48,6 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
         this.bas.add(this.lancerBilles);
         this.arreterBilles = new Button("arreter les billes");
         this.bas.add(this.arreterBilles);
-
-        billard.addMouseListener(this);
-        billard.addMouseMotionListener(this);
-
-        installeControleur();
-    }
-
-    private void installeControleur() {
-        controlerAttraper = new ControlerAttraper(this, null);
-        controlerAttracter = new ControlerAttracter(this, controlerAttraper);
-
-        controlerAttraper.suivant = controlerAttracter;
-
-        controlerEtatcourant = controlerAttraper;
     }
 
     public double largeurBillard() {
@@ -93,38 +66,5 @@ public class CadreAngryBalls extends Frame implements VueBillard, MouseListener,
     @Override
     public void montrer() {
         this.setVisible(true);
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        controlerEtatcourant.traiter(e);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        controlerEtatcourant.suivant.precPosCurseur = new Vecteur(e.getX(), e.getY());
-        controlerEtatcourant.traiter(e);
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        controlerEtatcourant.traiter(e);
-    }
-
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
     }
 }

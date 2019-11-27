@@ -84,10 +84,15 @@ public abstract class Bille {
         g.drawOval(xMin, yMin, width, height);
     }
 
+//
+//    public String toString() {
+//        return "[pos : " + getPosition() + ", ray : " + getRayon() + ", vit : " + getVitesse() + ", acc : " + getAcceleration() +
+//                ", col : " + getCouleur() + ", key : " + getClef() + ", " + "]\n";
+//    }
+
 
     public String toString() {
-        return "[pos : " + getPosition() + ", ray : " + getRayon() + ", vit : " + getVitesse() + ", acc : " + getAcceleration() +
-                ", col : " + getCouleur() + ", key : " + getClef() + ", " + "]\n";
+        return "[Couleur : " + getCouleur() + ", Masse : " + masse() + ", Rayon : " + getRayon() + "]\n";
     }
 
 //----------------- classe Bille -------------------------------------

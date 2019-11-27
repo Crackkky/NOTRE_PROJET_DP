@@ -5,10 +5,8 @@ import mesmaths.geometrie.base.Vecteur;
 import java.util.Vector;
 
 public class MvtAttrapable extends DecorateurBille{
-    public Vecteur precCoordCurseur;
-    public Vecteur coordCurseur;
-
-    public double calibrage = 0.000999;
+    public static double calibrage = 60;
+    public Vecteur directionCurseur;
 
     public MvtAttrapable(Bille billeDecoree) {
         super(billeDecoree);
@@ -17,15 +15,8 @@ public class MvtAttrapable extends DecorateurBille{
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         this.billeDecoree.gestionAcceleration(billes);
-        if (coordCurseur != null) {
-            this.getAcceleration().ajoute(new Vecteur(coordCurseur.x - precCoordCurseur.x, coordCurseur.y - precCoordCurseur.y).produit(calibrage));
+        if (directionCurseur != null) {
+            this.getAcceleration().ajoute(directionCurseur.produit(calibrage).produit(1 / masse()));
         }
-    }
-    public Vecteur getCoordCurseur() {
-        return coordCurseur;
-    }
-
-    public Vecteur getPrecCoordCurseur() {
-        return precCoordCurseur;
     }
 }

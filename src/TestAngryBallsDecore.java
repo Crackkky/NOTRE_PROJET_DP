@@ -1,3 +1,4 @@
+import controleurs.ControleurAttrapeur;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.BilleNormal;
@@ -29,6 +30,8 @@ public class TestAngryBallsDecore {
         CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes);
+
+        ControleurAttrapeur controleurAttrapeur = new ControleurAttrapeur(cadre);
 
         cadre.montrer(); // on rend visible la vue
 

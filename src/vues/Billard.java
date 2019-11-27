@@ -12,7 +12,7 @@ import java.util.Vector;
  * ICI : IL N'Y A RIEN A CHANGER
  */
 public class Billard extends Canvas {
-    Vector<Bille> billes;
+    public Vector<Bille> billes;
 
     public Billard(Vector<Bille> billes) {
         this.billes = billes;

@@ -1,16 +1,16 @@
-package vues;
+package controleurs;
 
 import mesmaths.geometrie.base.Vecteur;
 
 import java.awt.event.MouseEvent;
 
 public abstract class ControlerEtat {
-    public CadreAngryBalls cadreAngryBalls;
+    public ControleurAttrapeur controleurAttrapeur;
     public ControlerEtat suivant;
     Vecteur precPosCurseur;
 
-    public ControlerEtat(CadreAngryBalls cadreAngryBalls, ControlerEtat suivant) {
-        this.cadreAngryBalls = cadreAngryBalls;
+    public ControlerEtat(ControleurAttrapeur controleurAttrapeur, ControlerEtat suivant) {
+        this.controleurAttrapeur = controleurAttrapeur;
         this.suivant = suivant;
     }
 
