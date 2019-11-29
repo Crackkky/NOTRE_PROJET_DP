@@ -1,9 +1,6 @@
 import controleurs.ControleurAttrapeur;
 import mesmaths.geometrie.base.Vecteur;
-import modele.Bille;
-import modele.BilleNormal;
-import modele.MurArret;
-import modele.MvtAttrapable;
+import modele.*;
 import vues.CadreAngryBalls;
 
 import java.awt.*;
@@ -31,7 +28,7 @@ public class TestAngryBallsDecore {
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes);
 
-        ControleurAttrapeur controleurAttrapeur = new ControleurAttrapeur(cadre);
+        ControleurAttrapeur controleurAttrapeur = new ControleurAttrapeur(cadre.billard);
 
         cadre.montrer(); // on rend visible la vue
 

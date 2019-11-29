@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 public abstract class ControlerEtat {
     public ControleurAttrapeur controleurAttrapeur;
     public ControlerEtat suivant;
-    Vecteur precPosCurseur;
 
     public ControlerEtat(ControleurAttrapeur controleurAttrapeur, ControlerEtat suivant) {
         this.controleurAttrapeur = controleurAttrapeur;

@@ -1,25 +1,27 @@
 package controleurs;
 
-import mesmaths.geometrie.base.Vecteur;
+import java.util.Vector;
+import modele.Bille;
 import modele.MvtAttrapable;
-import vues.CadreAngryBalls;
+import vues.Billard;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class ControleurAttrapeur implements MouseListener, MouseMotionListener {
-    ControlerEtat controlerEtatcourant;
-    CadreAngryBalls cadre;
+    Vector<Bille> billes;
     MvtAttrapable billeAttrapable;
-    private ControlerAttraper controlerAttraper;
-    private ControlerAttracter controlerAttracter;
 
-    public ControleurAttrapeur(CadreAngryBalls cadre) {
-        this.cadre = cadre;
+    ControlerEtat controlerEtatcourant;
+    ControlerAttraper controlerAttraper;
+    ControlerAttracter controlerAttracter;
 
-        cadre.billard.addMouseListener(this);
-        cadre.billard.addMouseMotionListener(this);
+    public ControleurAttrapeur(Billard billard) {
+        this.billes = billard.billes;
+
+        billard.addMouseListener(this);
+        billard.addMouseMotionListener(this);
 
         installeControleur();
     }
@@ -49,7 +51,6 @@ public class ControleurAttrapeur implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        controlerEtatcourant.suivant.precPosCurseur = new Vecteur(e.getX(), e.getY());
         controlerEtatcourant.traiter(e);
     }
 

@@ -1,5 +1,6 @@
 package controleurs;
 
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.MvtAttrapable;
 import modele.OutilsBille;
@@ -17,12 +18,9 @@ public class ControlerAttraper extends ControlerEtat {
         if (arg0.getButton() == MouseEvent.BUTTON1) {
             Bille bille;
             Object object;
-            if ((bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), controleurAttrapeur.cadre.billard.billes)) != null) {
-                System.out.println("Bille cliquee : " + bille);
-
-                System.out.println(bille.getMvt(MvtAttrapable.class));
+            if ((bille = OutilsBille.clickSurUneBille(arg0.getX(), arg0.getY(), controleurAttrapeur.billes)) != null) {
                 if ((object = bille.getMvt(MvtAttrapable.class)) != null) {
-
+                    controleurAttrapeur.controlerAttracter.precPosCurseur = new Vecteur(arg0.getX(), arg0.getY());
                     controleurAttrapeur.billeAttrapable = (MvtAttrapable) object;
                     controleurAttrapeur.controlerEtatcourant = suivant;
                 }

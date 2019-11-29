@@ -7,7 +7,7 @@ import java.util.Vector;
 
 
 public abstract class DecorateurBille extends Bille {
-    protected Bille billeDecoree;
+    public Bille billeDecoree;
 
     protected DecorateurBille(Bille billeDecoree) {
         this.billeDecoree = billeDecoree;
@@ -26,8 +26,8 @@ public abstract class DecorateurBille extends Bille {
 
     private Object getMvtRecursif(Class<?> c, DecorateurBille decorateurBille) {
         if (decorateurBille.getClass() == c)
-            return this;
-        return billeDecoree != null && billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
+            return decorateurBille;
+        return decorateurBille instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
     }
 
     @Override

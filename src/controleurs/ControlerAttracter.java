@@ -5,6 +5,7 @@ import mesmaths.geometrie.base.Vecteur;
 import java.awt.event.MouseEvent;
 
 public class ControlerAttracter extends ControlerEtat {
+    Vecteur precPosCurseur;
 
     public ControlerAttracter(ControleurAttrapeur controleurAttrapeur, ControlerEtat suivant) {
         super(controleurAttrapeur, suivant);
