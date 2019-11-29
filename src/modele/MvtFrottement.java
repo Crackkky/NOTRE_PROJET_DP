@@ -12,7 +12,7 @@ public class MvtFrottement extends DecorateurBille {
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-        this.billeDecoree.gestionAcceleration(billes);
+        super.gestionAcceleration(billes);
         this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse()));      // contribution de l'acceleration due au frottement dans l'air
     }
 }

@@ -90,6 +90,8 @@ public abstract class DecorateurBille extends Bille {
      * On ne sait pas encore comment la bille va accélérer.
      */
     @Override
-    public abstract void gestionAcceleration(Vector<Bille> billes);
+    public void gestionAcceleration(Vector<Bille> billes) {
+        this.billeDecoree.gestionAcceleration(billes);
+    };
 
 }

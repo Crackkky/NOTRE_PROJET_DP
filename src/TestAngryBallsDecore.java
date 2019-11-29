@@ -87,11 +87,11 @@ public class TestAngryBallsDecore {
                 new BilleNormal(p4, rayon, v4, Color.black, new MurArret())));
 
 
-        billes.add(new MvtNewton(
+        billes.add(new MvtSonore(new MvtNewton(
                 new MvtPesanteur(
                         new MvtFrottement(
                                 new MvtAttrapable(
-                                        new BilleNormal(p42, rayon, v42, Color.pink, new MurArret()))), new Vecteur(0, 0.001))));
+                                        new BilleNormal(p42, rayon, v42, Color.pink, new MurArret()))), new Vecteur(0, 0.001))), new SoundPlayer(), "modele/conflict.mp3"));
 
 
 //---------------------- ici finit la partie e changer -------------------------------------------------------------

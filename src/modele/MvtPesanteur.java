@@ -14,7 +14,7 @@ public class MvtPesanteur extends DecorateurBille {
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-        this.billeDecoree.gestionAcceleration(billes);
+        super.gestionAcceleration(billes);
         this.getAcceleration().ajoute(this.pesanteur);
     }
 }

@@ -14,7 +14,7 @@ public class MvtAttrapable extends DecorateurBille{
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-        this.billeDecoree.gestionAcceleration(billes);
+        super.gestionAcceleration(billes);
         if (directionCurseur != null) {
             this.getAcceleration().ajoute(directionCurseur.produit(calibrage).produit(1 / masse()));
             directionCurseur = null; // Si bille doit continuer, d'accélérer en maintenant la souris, mettre en coms
