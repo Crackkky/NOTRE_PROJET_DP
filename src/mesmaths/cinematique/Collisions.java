@@ -4,6 +4,7 @@ package mesmaths.cinematique;
 import mesmaths.MesMaths;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
+import modele.CollisionDetail;
 
 
 public class Collisions {
@@ -563,8 +564,8 @@ public class Collisions {
         }
     } // collisionBilleBille2
 
-    public static boolean CollisionBilleBille(Vecteur position1, double rayon1, Vecteur vitesse1, double masse1,
-                                              Vecteur position2, double rayon2, Vecteur vitesse2, double masse2)
+    public static CollisionDetail CollisionBilleBille(Vecteur position1, double rayon1, Vecteur vitesse1, double masse1,
+                                                      Vecteur position2, double rayon2, Vecteur vitesse2, double masse2)
 //modifie b1 et b2
 //donnees : b1 et b2 avant le choc
 //resultats : b1 et b2 après le choc
@@ -579,7 +580,7 @@ public class Collisions {
         double r = rayon1 + rayon2;
 
         if (nG1G2 >= r)     // il n'y a pas de collision entre les 2 billes
-            return false;
+            return null;
 
         else {
             Vecteur u = G1G2.produit(1 / nG1G2);
@@ -605,8 +606,6 @@ public class Collisions {
 
                 position1.set(G1s);
                 position2.set(G2s);
-                //System.err.println("choc mou");
-                return true;
             } else                // il y a choc elastique entre les 2 billes
             {
                 //d'abord calcul des vitesses après le choc
@@ -633,10 +632,8 @@ public class Collisions {
 
                 position1.ajoute(vs1.produit(dT));
                 position2.ajoute(vs2.produit(dT));
-
-
-                return true;
             }
+            return new CollisionDetail(a, Vecteur.milieu(position1, position2));
         }
     } // collisionBilleBille
 

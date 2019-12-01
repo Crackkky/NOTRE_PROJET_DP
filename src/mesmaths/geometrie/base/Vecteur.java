@@ -3,6 +3,7 @@ package mesmaths.geometrie.base;
 import mesmaths.MesMaths;
 
 import java.awt.*;
+import java.util.Vector;
 
 /**
  * Vecteur du plan defini par un couple (x,y) oe x et y sont des reels quelconques
@@ -244,6 +245,14 @@ public class Vecteur {
      */
     public Vecteur produitComplexe(Vecteur v) {
         return new Vecteur(x * v.x - y * v.y, x * v.y + y * v.x);
+    }
+
+    public static Vecteur milieu(Vecteur a, Vecteur b) {
+        return a.milieu(b);
+    }
+
+    public Vecteur milieu(Vecteur v) {
+        return new Vecteur((x + v.x)/2, (y + v.y)/2);
     }
 
 }

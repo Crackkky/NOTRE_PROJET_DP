@@ -61,10 +61,10 @@ public abstract class Bille {
      * <p>
      * Le comportement par defaut est le choc parfaitement elastique (c-e-d rebond sans amortissement)
      *
-     * @return true si il y a collision et dans ce cas les getPosition()s et vecteurs vitesses des 2 billes impliquees dans le choc sont modifiees
-     * si renvoie false, il n'y a pas de collision et les billes sont laissees intactes
+     * @return un CollisionBilleDetail si il y a collision et dans ce cas les getPosition()s et vecteurs vitesses des 2 billes impliquees dans le choc sont modifiees
+     * si renvoie null, il n'y a pas de collision et les billes sont laissees intactes
      */
-    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+    public CollisionBilleDetail gestionCollisionBilleBille(Vector<Bille> billes) {
         return OutilsBille.gestionCollisionBilleBille(this, billes);
     }
 

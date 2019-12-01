@@ -44,10 +44,10 @@ public class OutilsBille {
      *                   billes est la liste de toutes les billes en mouvement
      *                   <p>
      *                   Le comportement par defaut est le choc parfaitement elastique (c-e-d rebond sans amortissement)
-     * @return true si il y a collision et dans ce cas les positions et vecteurs vitesses des 2 billes impliquees dans le choc sont modifiees
-     * si renvoie false, il n'y a pas de collision et les billes sont laissees intactes
+     * @return un CollisionBilleDetail si il y a collision et dans ce cas les positions et vecteurs vitesses des 2 billes impliquees dans le choc sont modifiees
+     * si renvoie null, il n'y a pas de collision et les billes sont laissees intactes
      */
-    public static boolean gestionCollisionBilleBille(Bille cetteBille, Vector<Bille> billes) {
+    public static CollisionBilleDetail gestionCollisionBilleBille(Bille cetteBille, Vector<Bille> billes) {
 //--- on recupere d'abord dans autresBilles toutes les billes sauf cetteBille ----
 
         Vector<Bille> autresBilles = OutilsBille.autresBilles(cetteBille, billes);
@@ -56,16 +56,16 @@ public class OutilsBille {
 //-------------- on suppose qu'il ne peut y avoir de collision qui implique plus de deux billes e la fois ---------------
 
         Bille billeCourante;
-
+        CollisionDetail collisionDetail;
         int i;
 
         for (i = 0; i < autresBilles.size(); ++i) {
             billeCourante = autresBilles.get(i);
-            if (Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(), cetteBille.masse(),
-                    billeCourante.getPosition(), billeCourante.getRayon(), billeCourante.getVitesse(), billeCourante.masse()))
-                return true;
+            if ((collisionDetail = Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(), cetteBille.masse(),
+                    billeCourante.getPosition(), billeCourante.getRayon(), billeCourante.getVitesse(), billeCourante.masse())) != null)
+                return new CollisionBilleDetail(cetteBille, billeCourante, collisionDetail);
         }
-        return false;
+        return null;
     }
 
 

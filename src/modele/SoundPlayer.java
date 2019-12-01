@@ -13,7 +13,7 @@ public class SoundPlayer implements Sound{
         JFXPanel fxPanel = new JFXPanel(); //Initialise des composants JavaFx nécessaire à MediaPlayer
     }
 
-    static HashMap<String, Media> hashMap = new HashMap<String, Media>();; //Permet le stockage des medias <CheminRelatif, Media>
+    static HashMap<String, Media> hashMap = new HashMap(); //Permet le stockage des medias <CheminRelatif, Media>
     static ClassLoader cl = ClassLoader.getSystemClassLoader(); //Permet d'obtenir le chemin jusqu'au projet
 
     public SoundPlayer() {}
@@ -30,7 +30,7 @@ public class SoundPlayer implements Sound{
      */
     public void playSound(String sound, double balance, double volume) {
         Media media = hashMap.get(sound);
-        if(media == null) {
+        if(media == null) { //On enregistre le fichier si jamais ouvert
             URL soundPath = cl.getResource(sound);
             if (soundPath == null) {
                 System.out.println("Le fichier audio " + sound + " est introuvable,\n sagit-il bien d'un chemin relatif ?");
@@ -42,10 +42,7 @@ public class SoundPlayer implements Sound{
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.balanceProperty().setValue(balance);
         mediaPlayer.setVolume(volume);
+        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); //Une fois le media terminé, on le libère
         mediaPlayer.play();
-    }
-
-    public HashMap getHashMap() {
-        return hashMap;
     }
 }

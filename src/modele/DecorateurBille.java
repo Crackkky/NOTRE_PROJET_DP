@@ -27,7 +27,7 @@ public abstract class DecorateurBille extends Bille {
     private Object getMvtRecursif(Class<?> c, DecorateurBille decorateurBille) {
         if (decorateurBille.getClass() == c)
             return decorateurBille;
-        return decorateurBille instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
+        return decorateurBille.billeDecoree instanceof DecorateurBille ? getMvtRecursif(c, (DecorateurBille) decorateurBille.billeDecoree) : null;
     }
 
     @Override
@@ -71,7 +71,7 @@ public abstract class DecorateurBille extends Bille {
     }
 
     @Override
-    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+    public CollisionBilleDetail gestionCollisionBilleBille(Vector<Bille> billes) {
         return this.billeDecoree.gestionCollisionBilleBille(billes);
     }
 
@@ -92,6 +92,6 @@ public abstract class DecorateurBille extends Bille {
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
         this.billeDecoree.gestionAcceleration(billes);
-    };
+    }
 
 }
