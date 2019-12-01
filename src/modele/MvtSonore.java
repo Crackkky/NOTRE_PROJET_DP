@@ -32,7 +32,7 @@ public class MvtSonore extends DecorateurBille {
                 mvtSonore.playSound(balance, volume);
             }
             //Ensuite seulement on parle, qu'est-ce qu'on est poli !
-            playSound(0, volume);
+            playSound(balance, volume);
         }
         return collisionBilleDetail;
     }
