@@ -28,7 +28,10 @@ public class TestAngryBallsDecore {
                 "Animation de billes ayant des comportements differents. Situation ideale pour mettre en place le DP Decorator",
                 billes);
 
-        ControleurAttrapeur controleurAttrapeur = new ControleurAttrapeur(cadre.billard);
+        ControleurAttrapeur controleurAttrapeur = new ControleurAttrapeur(cadre.billard.billes);
+
+        cadre.billard.addMouseListener(controleurAttrapeur);
+        cadre.billard.addMouseMotionListener(controleurAttrapeur);
 
         cadre.montrer(); // on rend visible la vue
 

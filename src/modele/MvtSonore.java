@@ -1,7 +1,5 @@
 package modele;
 
-import vues.VueBillard;
-
 import java.util.Vector;
 
 public class MvtSonore extends DecorateurBille {
@@ -14,20 +12,20 @@ public class MvtSonore extends DecorateurBille {
         super(billeDecoree);
         this.soundPath = soundPath;
         this.soundPlayer = soundPlayer;
-        this.centreSonoreAffichage = largeurAffichage/2;
+        this.centreSonoreAffichage = largeurAffichage / 2;
     }
 
     public CollisionBilleDetail gestionCollisionBilleBille(Vector<Bille> billes) {
         CollisionBilleDetail collisionBilleDetail;
 
-        if((collisionBilleDetail = super.gestionCollisionBilleBille(billes)) != null) {
+        if ((collisionBilleDetail = super.gestionCollisionBilleBille(billes)) != null) {
             //Interprétation des caractéristiques du choc
             double balance = (collisionBilleDetail.collisionDetail.positionChoc.x - centreSonoreAffichage) / centreSonoreAffichage,
                     volume = collisionBilleDetail.collisionDetail.intensite / MAX_COEF_SON;
             //On teste si la deuxieme bille a quelque chose à dire
             Bille bille2 = collisionBilleDetail.bille2;
             Object o = bille2.getMvt(getClass());
-            if(o != null) {
+            if (o != null) {
                 MvtSonore mvtSonore = (MvtSonore) o;
                 mvtSonore.playSound(balance, volume);
             }

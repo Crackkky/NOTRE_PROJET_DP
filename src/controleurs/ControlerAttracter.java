@@ -20,9 +20,11 @@ public class ControlerAttracter extends ControlerEtat {
             return;
         }
 
-        controleurAttrapeur.billeAttrapable.directionCurseur = new Vecteur(arg0.getX() - precPosCurseur.x, arg0.getY() - precPosCurseur.y);
+        Vecteur curseur = new Vecteur(arg0.getX(), arg0.getY());
 
-        precPosCurseur = new Vecteur(arg0.getX(), arg0.getY());
+        controleurAttrapeur.billeAttrapable.directionCurseur = curseur.difference(precPosCurseur);
+
+        precPosCurseur = curseur;
     }
 
     @Override

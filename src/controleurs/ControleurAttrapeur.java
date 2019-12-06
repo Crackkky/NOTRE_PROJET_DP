@@ -1,13 +1,12 @@
 package controleurs;
 
-import java.util.Vector;
 import modele.Bille;
 import modele.MvtAttrapable;
-import vues.Billard;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Vector;
 
 public class ControleurAttrapeur implements MouseListener, MouseMotionListener {
     Vector<Bille> billes;
@@ -17,11 +16,8 @@ public class ControleurAttrapeur implements MouseListener, MouseMotionListener {
     ControlerAttraper controlerAttraper;
     ControlerAttracter controlerAttracter;
 
-    public ControleurAttrapeur(Billard billard) {
-        this.billes = billard.billes;
-
-        billard.addMouseListener(this);
-        billard.addMouseMotionListener(this);
+    public ControleurAttrapeur(Vector<Bille> billes) {
+        this.billes = billes;
 
         installeControleur();
     }
